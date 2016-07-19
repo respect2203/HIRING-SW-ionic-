@@ -1,0 +1,84 @@
+.bar.bar-dark .title {
+  margin-right: 10%;
+  text-align: right;
+  color: darkorange;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.custom-btn {
+    width: 23%;
+    margin-left: 1%;
+}
+.bar-dark .button{
+  background-color: darkorange;
+  color: black;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+.info-caption{
+  padding-left: 72px;
+  font-weight: 600;
+}
+.details-show {
+  height: 70px;
+  opacity: 1;
+}
+.details-show.ng-hide-add,
+.details-show.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+.details-show.ng-hide {
+  height: 0;
+  opacity: 0;
+}
+p{
+  margin: 0;
+}
+.item{
+  border-bottom: none;
+  border-color: #444;
+}
+.custom-label{
+  border-top: none;
+  border-bottom: 2px solid;
+}
+#new_empl .button {
+  width: 40%;
+  margin: 0px 20px 0 20px;
+  font-size: 15px;
+}
+.picsCont{
+  text-align: center;
+}
+.pics{
+  height: 65px;
+  width: 65px;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 2px;
+  margin: 10px 15px 10px 15px;
+  cursor: pointer;
+}
+label > span{
+  font-weight: 700;
+  text-transform: uppercase;
+}
+label > i{
+  font-size: 32px;
+  color: darkorange;
+}
+.item-select select{
+  padding: 0 48px 0 0;
+  right: auto;
+  direction: ltr;
+}
+.item-toggle{
+  border: none;
+  padding: 10px 0 0 100px;
+}
+.toggle .track,
+.toggle .handle{
+  height: 12px;
+  cursor: pointer;
+}

@@ -1,0 +1,45 @@
+      <div class="bar bar-dark bar-subheader">
+        <a class="button ion-plus custom-btn" ng-click="login()">&nbsp;Hire</a>
+        <a class="button ion-search custom-btn" ng-click="isSearchVisible = !isSearchVisible;isOrderVisible = false;">&nbsp;Search</a>
+        <a class="button ion-drag custom-btn" ng-click="isOrderVisible = !isOrderVisible;isSearchVisible = false">&nbsp;Order</a>
+        <a class="button ion-android-close custom-btn" href="#">&nbsp;Clear all</a>
+      </div>
+      <ion-content class="has-subheader">
+
+        <div ng-show="isSearchVisible">
+          <div class="custom-label item item-input-inset">
+            <label class="item-input-wrapper">
+              <input type="text" placeholder="Start typing to search...">
+            </label>
+          </div>
+        </div>
+        <div ng-show="isOrderVisible">
+          <label class="item item-input item-select">
+            <div class="input-label">Order by</div>
+            <select>
+              <option ng-repeat="item in orderList">{{item}}</option>
+            </select>
+          </label>
+          <label class="custom-label item item-input item-select">
+            <div class="input-label">Order direction</div>
+            <select>
+              <option selected>Up</option>
+              <option>Down</option>
+            </select>
+          </label>
+        </div>
+        <ion-list>
+          <div ng-repeat="person in emplList" ng-click="isDetailsVisible = !isDetailsVisible">
+            <a class="item item-avatar" href="#">
+              <img src="img/{{person.photo}}">
+              <h3>{{person.name}}</h3>
+              <p>{{person.position}}</p>
+            </a>
+            <div ng-show="isDetailsVisible" class="details-show">
+              <p><span class="info-caption">Started:</span> {{person.start}}</p>
+              <p><span class="info-caption">Department:</span> {{person.department}}</p>
+              <p><span class="info-caption">Skills:</span> <span ng-repeat="skill in person.skills">{{skill}} </span></p>
+            </div>
+          </div>
+        </ion-list>
+      </ion-content>

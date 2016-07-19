@@ -1,0 +1,68 @@
+<ion-modal-view>
+  <ion-header-bar  align-title="right" class="bar-dark">
+    <h1 class="title">add new employee</h1>
+  </ion-header-bar>
+  <div id="new_empl" class="bar bar-dark bar-subheader">
+    <button class="button icon-left ion-android-person-add" ng-click="addEmployee()">Save</button>
+    <button class="button icon-left ion-android-cancel" ng-click="closeLogin()">Cancel</button>
+  </div>
+  <ion-content class="has-subheader">
+    <div class="picsCont">
+      <img class="pics" ng-repeat="avatar in picsList" src="img/{{avatar}}">
+    </div>
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="John Smith">
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">Department</span>
+        <select>
+          <option ng-repeat="department in departmentsList">{{department}}</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">Position</span>
+        <select>
+          <option ng-repeat="position in positionsList">{{position}}</option>
+        </select>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Start date</span>
+        <input type="date" ng-model="startdate">
+      </label>
+      <label class="item item-input" ng-click="isSkillsVisible = !isSkillsVisible">
+        <span class="input-label">Skills</span>
+        <i ng-if="isSkillsVisible" class="icon ion-toggle"></i>
+        <i ng-if="!isSkillsVisible" class="icon ion-toggle-filled"></i>
+      </label>
+      <ul class="list" ng-show="!isSkillsVisible">
+        <li class="item item-toggle" ng-repeat="skill in skillsList">
+          {{skill}}
+          <label class="toggle toggle-energized">
+            <input type="checkbox"><div class="track"><div class="handle"></div></div>
+          </label>
+        </li>
+      </ul>
+    </div>
+<!--    <form ng-submit="doLogin()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Log in</button>
+          <button class="button button-block button-positive" type="submit">Log in</button>
+        </label>
+      </div>
+    </form>-->
+  </ion-content>
+  <ion-footer-bar  align-title="right" class="bar-dark">
+    <h1 class="title"><i class="icon ion-play">&nbsp;Integrity Vision</i></h1>
+  </ion-footer-bar>
+</ion-modal-view>
