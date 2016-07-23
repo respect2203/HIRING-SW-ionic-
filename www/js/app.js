@@ -29,7 +29,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     .state('app', {
     url: '/hr_sw',
     templateUrl: 'templates/empl_list.html',
-    controller: 'empl_listCtrl'
+    controller: 'EmployeeListCtrl'
   });
 
   $urlRouterProvider.otherwise('/hr_sw');

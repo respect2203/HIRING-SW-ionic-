@@ -1,6 +1,7 @@
+
       <div class="bar bar-dark bar-subheader">
         <a class="button ion-plus custom-btn" ng-click="login()">&nbsp;Hire</a>
-        <a class="button ion-search custom-btn" ng-click="isSearchVisible = !isSearchVisible;isOrderVisible = false;">&nbsp;Search</a>
+        <a class="button ion-search custom-btn" ng-click="searchFunction()">&nbsp;Search</a>
         <a class="button ion-drag custom-btn" ng-click="isOrderVisible = !isOrderVisible;isSearchVisible = false">&nbsp;Order</a>
         <a class="button ion-android-close custom-btn" href="#">&nbsp;Clear all</a>
       </div>
@@ -9,8 +10,11 @@
         <div ng-show="isSearchVisible">
           <div class="custom-label item item-input-inset">
             <label class="item-input-wrapper">
-              <input type="text" placeholder="Start typing to search...">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input id="searchInput" ng-model="search.searchText" type="text" placeholder="Start typing to search...">
             </label>
+            <button class="button icon ion-backspace" ng-click="backSpace()"></button>
+            <button class="button icon ion-close-circled" ng-click="cleanSearch()";></button>
           </div>
         </div>
         <div ng-show="isOrderVisible">
@@ -29,7 +33,7 @@
           </label>
         </div>
         <ion-list>
-          <div ng-repeat="person in emplList" ng-click="isDetailsVisible = !isDetailsVisible">
+          <div ng-repeat="person in emplList | filter: search.searchText" ng-click="isDetailsVisible = !isDetailsVisible">
             <a class="item item-avatar" href="#">
               <img src="img/{{person.photo}}">
               <h3>{{person.name}}</h3>
