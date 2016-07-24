@@ -1,32 +1,132 @@
 angular.module('starter.controllers', [])
 
-  .controller('EmployeeListCtrl', function($scope, $ionicModal, $timeout) {
+  .controller('EmployeeListCtrl', function($scope, $ionicModal, $location, $anchorScroll) {
+    if (!angular.isUndefined(window.localStorage["emplList"])){
+      $scope.emplList = JSON.parse(window.localStorage["emplList"]);
+    } else {
       $scope.emplList = [
-        { photo: "1.png", name: 'Reggae Martin', start: "01.02.2004", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]},
-        { photo: "3.png", name: 'John Smith', start: "31.01.2014", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]},
-        { photo: "5.png", name: 'Jeff Chill', start: "08.02.2008", position: "QA specialist", department: "IT Department", skills:  ["JavaScript", "HTML", "SQL"]},
-        { photo: "5.png", name: 'Davis Tremblay', start: "10.12.2010", position: "Software Developer", department: "Customer Service", skills:  ["Java", "Lisp", "BPMN"]},
-        { photo: "7.png", name: 'Barbara García', start: "01.02.2004", position: "QA specialist", department: "IT Department", skills:  ["Java", "HTML", "BPMN"]},
-        { photo: "3.png", name: 'Sarah Brown', start: "10.12.2010", position: "Software Developer", department: "Customer Service", skills:  ["Java", "Lisp", "BPMN"]},
-        { photo: "7.png", name: 'Kevin Martin', start: "31.01.2014", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]},
-        { photo: "4.png", name: 'Cowbell Lopez', start: "01.02.2004", position: "QA specialist", department: "IT Department", skills:  ["Java", "HTML", "BPMN"]},
-        { photo: "3.png", name: 'King Turner', start: "31.01.2014", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]},
-        { photo: "7.png", name: 'Jackson Wilson', start: "10.12.2010", position: "Software Developer", department: "Customer Service", skills:  ["Java", "Lisp", "BPMN"]},
-        { photo: "6.png", name: 'Ruth Tremblay', start: "01.02.2004", position: "QA specialist", department: "IT Department", skills:  ["Java", "HTML", "BPMN"]},
-        { photo: "2.png", name: 'Indie Wilson', start: "08.02.2008", position: "QA specialist", department: "IT Department", skills:  ["JavaScript", "HTML", "SQL"]},
-        { photo: "1.png", name: 'Anderson Smith', start: "10.12.2010", position: "Software Developer", department: "Customer Service", skills:  ["Java", "Lisp", "BPMN"]},
-        { photo: "6.png", name: 'Thomas Brown', start: "31.01.2014", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]}
+        {
+          photo: "1.png",
+          name: 'Reggae Martin',
+          start: "01.02.2004",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "HTML", "BPMN"]
+        },
+        {
+          photo: "3.png",
+          name: 'John Smith',
+          start: "31.01.2014",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "HTML", "BPMN"]
+        },
+        {
+          photo: "5.png",
+          name: 'Jeff Chill',
+          start: "08.02.2008",
+          position: "QA specialist",
+          department: "IT Department",
+          skills: ["JavaScript", "HTML", "SQL"]
+        },
+        {
+          photo: "5.png",
+          name: 'Davis Tremblay',
+          start: "10.12.2010",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "Lisp", "BPMN"]
+        },
+        {
+          photo: "7.png",
+          name: 'Barbara García',
+          start: "01.02.2004",
+          position: "QA specialist",
+          department: "IT Department",
+          skills: ["Java", "HTML", "BPMN"]
+        },
+        {
+          photo: "3.png",
+          name: 'Sarah Brown',
+          start: "10.12.2010",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "Lisp", "BPMN"]
+        },
+        {
+          photo: "7.png",
+          name: 'Kevin Martin',
+          start: "31.01.2014",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "HTML", "BPMN"]
+        },
+        {
+          photo: "4.png",
+          name: 'Cowbell Lopez',
+          start: "01.02.2004",
+          position: "QA specialist",
+          department: "IT Department",
+          skills: ["Java", "HTML", "BPMN"]
+        },
+        {
+          photo: "3.png",
+          name: 'King Turner',
+          start: "31.01.2014",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "HTML", "BPMN"]
+        },
+        {
+          photo: "7.png",
+          name: 'Jackson Wilson',
+          start: "10.12.2010",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "Lisp", "BPMN"]
+        },
+        {
+          photo: "6.png",
+          name: 'Ruth Tremblay',
+          start: "01.02.2004",
+          position: "QA specialist",
+          department: "IT Department",
+          skills: ["Java", "HTML", "BPMN"]
+        },
+        {
+          photo: "2.png",
+          name: 'Indie Wilson',
+          start: "08.02.2008",
+          position: "QA specialist",
+          department: "IT Department",
+          skills: ["JavaScript", "HTML", "SQL"]
+        },
+        {
+          photo: "1.png",
+          name: 'Anderson Smith',
+          start: "10.12.2010",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "Lisp", "BPMN"]
+        },
+        {
+          photo: "6.png",
+          name: 'Thomas Brown',
+          start: "31.01.2014",
+          position: "Software Developer",
+          department: "Customer Service",
+          skills: ["Java", "HTML", "BPMN"]
+        }
       ];
+    }
 
       //search functionality
       $scope.searchFunction = function() {
+        $location.hash('topOfThePage');
+        $anchorScroll();
         $scope.search = {searchText: ""};
         $scope.isSearchVisible = !$scope.isSearchVisible;
         !$scope.isSearchVisible ? $scope.search.searchText = "" : null;
-        /*
-        $location.hash('test');
-        $anchorScroll();
-        */
       };
       $scope.backSpace = function () {
         $scope.search.searchText = $scope.search.searchText.substr(0, $scope.search.searchText.length-1);
@@ -52,6 +152,8 @@ angular.module('starter.controllers', [])
         $scope.order.reverse ? $scope.order.reverseIcon = "ion-arrow-up-b" : $scope.order.reverseIcon = "ion-arrow-down-b";
       }
       $scope.orderFunction = function () {
+        $location.hash('topOfThePage');
+        $anchorScroll();
         $scope.isOrderVisible = !$scope.isOrderVisible;
         if (!$scope.isOrderVisible) {
           $scope.order.selected = "name";
@@ -141,10 +243,10 @@ angular.module('starter.controllers', [])
 
       $scope.isSkillsVisible = true;
       $scope.changeSkillsVisibility = function(){
-        $scope.isSkillsVisible = !$scope.isSkillsVisible;
         for (var j=0;j<$scope.skill.length;j++){
           $scope.skill[j].exist = false;
         }
+        $scope.isSkillsVisible = !$scope.isSkillsVisible;
       }
 
       $scope.addNewEmployee = function() {
@@ -169,6 +271,7 @@ angular.module('starter.controllers', [])
         }
 
         $scope.emplList.push($scope.newEmployee);
+        $scope.saveToLocalStorage();
         $scope.closeAddNewWindow();
 
       };
@@ -186,6 +289,9 @@ angular.module('starter.controllers', [])
         result += ".";
         result +=  date.getFullYear();
         return result;
+      }
 
+      $scope.saveToLocalStorage = function(){
+        window.localStorage["emplList"] = angular.toJson($scope.emplList);
       }
   });

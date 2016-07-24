@@ -36,6 +36,7 @@ p{
   margin: 0;
 }
 .item{
+  border-right: none;
   border-bottom: none;
   border-color: #444;
 }
