@@ -117,7 +117,14 @@ angular.module('starter.controllers', [])
           }
         };
         $scope.newEmployee.startDate = new Date();
-        $scope.skillsList = ["HTML7", "CSS3", "JavaScript", "Ionic", "AngularJS"];
+
+        $scope.skill = [
+          {name: "HTML7", exist: false},
+          {name: "CSS3", exist: false},
+          {name: "JavaScript", exist: false},
+          {name: "Ionic", exist: false},
+          {name: "AngularJS", exist: false}
+        ];
 
         $scope.modal.show();
       };
@@ -130,6 +137,14 @@ angular.module('starter.controllers', [])
       $scope.changeAvatar = function(){
         $scope.changeAvatarVisible = false;
         $scope.picsList = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png"];
+      }
+
+      $scope.isSkillsVisible = true;
+      $scope.changeSkillsVisibility = function(){
+        $scope.isSkillsVisible = !$scope.isSkillsVisible;
+        for (var j=0;j<$scope.skill.length;j++){
+          $scope.skill[j].exist = false;
+        }
       }
 
       $scope.addNewEmployee = function() {
@@ -148,14 +163,14 @@ angular.module('starter.controllers', [])
         }
         $scope.newEmployee.position = $scope.position[$scope.department.selected].positionList[$scope.position[$scope.department.selected].selected].name;
         $scope.newEmployee.start = $scope.formatDate($scope.newEmployee.startDate);
+        $scope.newEmployee.skills = [];
+        for (var j=0;j<$scope.skill.length;j++){
+          if ($scope.skill[j].exist) $scope.newEmployee.skills.push($scope.skill[j].name);
+        }
 
-        console.log($scope.newEmployee);
-        return true;
         $scope.emplList.push($scope.newEmployee);
+        $scope.closeAddNewWindow();
 
-        $timeout(function() {
-          $scope.closeAddNewWindow();
-        }, 1000);
       };
 
       $scope.closeAddNewWindow = function() {
@@ -173,6 +188,4 @@ angular.module('starter.controllers', [])
         return result;
 
       }
-
-
   });
