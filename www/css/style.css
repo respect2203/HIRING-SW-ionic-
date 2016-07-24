@@ -41,7 +41,7 @@ p{
 }
 .custom-label{
   border-top: none;
-  border-bottom: 2px solid;
+  border-bottom: none;
 }
 #new_empl .button {
   width: 40%;
@@ -81,4 +81,23 @@ label > i{
 .toggle .handle{
   height: 12px;
   cursor: pointer;
+}
+.labelWithButton{
+  width: 85%;
+  float: left;
+  border-right: none;
+}
+.corporate-btn{
+  color: darkorange;
+  background: #444444;
+}
+.btn-right{
+  position: absolute;
+  right: 11px;
+}
+.clear-both{
+  clear: both;
+}
+.order-line{
+  margin-bottom: 5px;
 }

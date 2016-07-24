@@ -2,8 +2,8 @@
       <div class="bar bar-dark bar-subheader">
         <a class="button ion-plus custom-btn" ng-click="login()">&nbsp;Hire</a>
         <a class="button ion-search custom-btn" ng-click="searchFunction()">&nbsp;Search</a>
-        <a class="button ion-drag custom-btn" ng-click="isOrderVisible = !isOrderVisible;isSearchVisible = false">&nbsp;Order</a>
-        <a class="button ion-android-close custom-btn" href="#">&nbsp;Clear all</a>
+        <a class="button ion-drag custom-btn" ng-click="orderFunction()">&nbsp;Order</a>
+        <a class="button ion-android-close custom-btn" ng-click="clearAll()">&nbsp;Clear all</a>
       </div>
       <ion-content class="has-subheader">
 
@@ -13,27 +13,24 @@
               <i class="icon ion-search placeholder-icon"></i>
               <input id="searchInput" ng-model="search.searchText" type="text" placeholder="Start typing to search...">
             </label>
-            <button class="button icon ion-backspace" ng-click="backSpace()"></button>
-            <button class="button icon ion-close-circled" ng-click="cleanSearch()";></button>
+            <button class="corporate-btn button icon ion-backspace" ng-click="backSpace()"></button>
+            <button class="corporate-btn button icon ion-close-circled" ng-click="cleanSearch()";></button>
           </div>
         </div>
-        <div ng-show="isOrderVisible">
-          <label class="item item-input item-select">
-            <div class="input-label">Order by</div>
-            <select>
-              <option ng-repeat="item in orderList">{{item}}</option>
+        <div ng-show="isOrderVisible" class="order-line">
+          <label class="custom-label item item-input item-select labelWithButton">
+            <div class="input-label">ORDER BY</div>
+            <select ng-model="order.selected">
+              <option ng-repeat="item in order.orderList" value="{{item.id}}">{{item.name}}</option>
             </select>
           </label>
-          <label class="custom-label item item-input item-select">
-            <div class="input-label">Order direction</div>
-            <select>
-              <option selected>Up</option>
-              <option>Down</option>
-            </select>
-          </label>
+          <div>
+            <button class="corporate-btn btn-right button icon {{order.reverseIcon}}" ng-click="changeReverse()";></button>
+          </div>
+          <div class="clear-both"></div>
         </div>
         <ion-list>
-          <div ng-repeat="person in emplList | filter: search.searchText" ng-click="isDetailsVisible = !isDetailsVisible">
+          <div ng-repeat="person in emplList | filter: search.searchText | orderBy:order.selected:order.reverse" ng-click="isDetailsVisible = !isDetailsVisible">
             <a class="item item-avatar" href="#">
               <img src="img/{{person.photo}}">
               <h3>{{person.name}}</h3>

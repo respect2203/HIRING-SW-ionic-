@@ -5,15 +5,14 @@ angular.module('starter.controllers', [])
         { photo: "1.png", name: 'Reggae Chill', start: "01.02.2004", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]},
         { photo: "2.png", name: 'Indie Chill', start: "08.02.2008", position: "QA specialist", department: "IT Department", skills:  ["JavaScript", "HTML", "SQL"]},
         { photo: "5.png", name: 'Dubstep Rap', start: "10.12.2010", position: "Software Developer", department: "Customer Service", skills:  ["Java", "Lisp", "BPMN"]},
-        { photo: "3.png", name: 'Rap Dubstep', start: "31.01.2014", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]},
+        { photo: "7.png", name: 'Rap Dubstep', start: "31.01.2014", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]},
         { photo: "4.png", name: 'Cowbell Indie', start: "01.02.2004", position: "QA specialist", department: "IT Department", skills:  ["Java", "HTML", "BPMN"]},
         { photo: "3.png", name: 'Rap Dubstep', start: "31.01.2014", position: "Software Developer", department: "Customer Service", skills:  ["Java", "HTML", "BPMN"]},
-        { photo: "5.png", name: 'Dubstep Rap', start: "10.12.2010", position: "Software Developer", department: "Customer Service", skills:  ["Java", "Lisp", "BPMN"]},
+        { photo: "7.png", name: 'Dubstep Rap', start: "10.12.2010", position: "Software Developer", department: "Customer Service", skills:  ["Java", "Lisp", "BPMN"]},
         { photo: "6.png", name: 'Reggae Chill', start: "01.02.2004", position: "QA specialist", department: "IT Department", skills:  ["Java", "HTML", "BPMN"]},
         { photo: "2.png", name: 'Indie Chill', start: "08.02.2008", position: "QA specialist", department: "IT Department", skills:  ["JavaScript", "HTML", "SQL"]},
         { photo: "5.png", name: 'Dubstep Rap', start: "10.12.2010", position: "Software Developer", department: "Customer Service", skills:  ["Java", "Lisp", "BPMN"]}
       ];
-      $scope.orderList = ["Name", "Started"];
       $scope.picsList = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png"];
       $scope.departmentsList = ["IT Department", "HR Department", "Finance Department"];
       $scope.positionsList = {0: ["Software Developer", "QA Specialist", "System Administrator"],
@@ -25,8 +24,7 @@ angular.module('starter.controllers', [])
       $scope.search = {searchText: ""};
       $scope.searchFunction = function() {
         $scope.isSearchVisible = !$scope.isSearchVisible;
-        $scope.isOrderVisible = false;
-        $scope.search.searchText = "";
+        !$scope.isSearchVisible ? $scope.search.searchText = "" : null;
         /*
         $location.hash('test');
         $anchorScroll();
@@ -38,6 +36,42 @@ angular.module('starter.controllers', [])
       $scope.cleanSearch = function () {
         $scope.search.searchText = "";
       };
+
+      //order functionally
+      $scope.order = {
+        selected: "name",
+        orderList : [
+          {id: "name", name: "Name"},
+          {id: "start", name: "Started"},
+          {id: "department", name: "Department"},
+          {id: "position", name: "Position"}
+        ],
+        reverse: false,
+        reverseIcon: "ion-arrow-down-b"
+      };
+      $scope.changeReverse = function(){
+        $scope.order.reverse = !$scope.order.reverse;
+        $scope.order.reverse ? $scope.order.reverseIcon = "ion-arrow-up-b" : $scope.order.reverseIcon = "ion-arrow-down-b";
+      }
+      $scope.orderFunction = function () {
+        $scope.isOrderVisible = !$scope.isOrderVisible;
+        if (!$scope.isOrderVisible) {
+          $scope.order.selected = "name";
+          $scope.order.reverse = false;
+          $scope.order.reverseIcon = "ion-arrow-down-b";
+        }
+      }
+
+      //reset search and order parameters
+      $scope.clearAll = function(){
+        $scope.isSearchVisible = false;
+        $scope.search.searchText = "";
+
+        $scope.order.selected = "name";
+        $scope.order.reverse = false;
+        $scope.order.reverseIcon = "ion-arrow-down-b";
+        $scope.isOrderVisible = false;
+      }
 
       // Create the login modal that we will use later
       $ionicModal.fromTemplateUrl('templates/empl_add.html', {
