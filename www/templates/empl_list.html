@@ -6,7 +6,6 @@
         <a class="button ion-android-close custom-btn" ng-click="clearAll()">&nbsp;Clear all</a>
       </div>
       <ion-content class="has-subheader">
-        <div id="topOfThePage"></div>
         <div ng-show="isSearchVisible">
           <div class="custom-label item item-input-inset">
             <label class="item-input-wrapper">
@@ -31,15 +30,16 @@
         </div>
         <ion-list>
           <div ng-repeat="person in emplList | filter: search.searchText | orderBy:order.selected:order.reverse" ng-click="isDetailsVisible = !isDetailsVisible">
+            <div id="topOfPage" ng-if="$index == 0"></div>
             <a class="item item-avatar">
-              <img src="img/{{person.photo}}">
+              <img src="img/{{person.photo}}.png">
               <h3>{{person.name}}</h3>
               <p>{{person.position}}</p>
             </a>
             <div ng-show="isDetailsVisible" class="details-show">
               <p><span class="info-caption">Started:</span> {{person.start}}</p>
               <p><span class="info-caption">Department:</span> {{person.department}}</p>
-              <p><span class="info-caption">Skills:</span> <span ng-repeat="skill in person.skills">{{skill}} </span></p>
+              <p ng-if="person.skills.length"><span class="info-caption">Skills:</span> <span ng-repeat="skill in person.skills">{{skill}} </span></p>
             </div>
           </div>
         </ion-list>
