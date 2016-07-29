@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
   .config(function ($anchorScrollProvider) {
         $anchorScrollProvider.disableAutoScrolling();
   })
-  .controller('EmployeeListCtrl', function($scope, $ionicModal, $http, baseUrl, $location, $anchorScroll, $timeout) {
+  .controller('EmployeeListCtrl', function($scope, $ionicModal, $http, baseUrl, $location, $anchorScroll) {
     //alternative of using REST (uncomment)
     /*
     $scope.saveToLocalStorage = function(){
@@ -139,10 +139,8 @@ angular.module('starter.controllers', [])
 
     //scroll to top of list calling Search or Order services
     $scope.showTop = function () {
-      //$timeout(function() {
-        $location.hash("topOfPage");
-        $anchorScroll();
-      //});
+      $location.hash("topOfPage");
+      $anchorScroll();
     }
 
     //search functionality
