@@ -5349,7 +5349,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
     right: 20%;
     bottom: 20%;
     left: 20%;
-    min-height: 240px;
+    min-height: 400px;
     width: 60%; }
   .modal.ng-leave-active {
     bottom: 0; }

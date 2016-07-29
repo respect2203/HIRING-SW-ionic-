@@ -139,10 +139,10 @@ angular.module('starter.controllers', [])
 
     //scroll to top of list calling Search or Order services
     $scope.showTop = function () {
-      $timeout(function() {
+      //$timeout(function() {
         $location.hash("topOfPage");
         $anchorScroll();
-      });
+      //});
     }
 
     //search functionality
