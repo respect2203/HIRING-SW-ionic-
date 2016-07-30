@@ -1,12 +1,21 @@
 angular.module('starter.controllers', [])
-  .constant('baseUrl', 'http://localhost:2403/hiring-app-db/')
+  .constant('baseUrl', 'https://api.myjson.com/bins/2odhb') //http://localhost:2403/hiring-app-db/
   .config(function ($anchorScrollProvider) {
         $anchorScrollProvider.disableAutoScrolling();
   })
   .controller('EmployeeListCtrl', function($scope, $ionicModal, $http, baseUrl, $location, $anchorScroll) {
+    //filling data by using REST
+    ($scope.getEmployeeList = function(){
+      $http.get(baseUrl)
+        .then(function(response){
+            $scope.emplList = response.data;
+      }, function(response) {
+            console.log("$http.get: status = " + response.status);
+      });
+    })();
+
     //alternative of using REST (uncomment)
-    /*
-    $scope.saveToLocalStorage = function(){
+ /*   $scope.saveToLocalStorage = function(){
       window.localStorage["emplList"] = angular.toJson($scope.emplList);
     }
     if (!angular.isUndefined(window.localStorage["emplList"])){
@@ -127,15 +136,7 @@ angular.module('starter.controllers', [])
         }
       ];
       $scope.saveToLocalStorage();
-    }
-    */
-
-    //filling data by using REST
-    ($scope.getEmployeeList = function(){
-      $http.get(baseUrl).success(function(response){
-        $scope.emplList = response;
-      })
-    })();
+    }*/
 
     //scroll to top of list calling Search or Order services
     $scope.showTop = function () {
@@ -275,11 +276,10 @@ angular.module('starter.controllers', [])
       $scope.saveToLocalStorage();
       $scope.emplList.push(item);
       */
-
-      $http.post(baseUrl, item).success(function(item){
-        $scope.emplList.push(item);
-        console.log("AddNew function: new record is succesfully added!");
-      })
+      $scope.emplList.push(item);
+      $http.put(baseUrl, $scope.emplList).success(function(response){
+        console.log("$http.put: new record added");
+      });
     }
 
     //adding new employee by pressing SAVE button

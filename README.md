@@ -9,6 +9,3 @@ Necessary preinstallations:
 	
 	Ionic (http://ionicframework.com/getting-started/)
 		> npm install -g ionic
-	
-	Deployd (optional) (http://deployd.com/)
-		Access to JSON: http://localhost:2403/hiring-app-db
