@@ -40,7 +40,7 @@
       <ul class="list" ng-show="isSkillsVisible">
         <li class="item item-toggle" ng-repeat="skill in skill">
           {{skill.name}}
-          <label class="toggle toggle-energized">
+          <label class="toggle toggle-{{skill.color}}">
             <input type="checkbox" ng-model="skill.exist"><div class="track"><div class="handle"></div></div>
           </label>
         </li>

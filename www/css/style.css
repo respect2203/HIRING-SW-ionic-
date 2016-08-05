@@ -76,25 +76,25 @@ label > i{
 }
 .item-toggle{
   border: none;
-  padding: 10px 0 0 100px;
+  padding: 23px 0 0 100px;
 }
 .toggle .track,
 .toggle .handle{
-  height: 12px;
+  //height: 12px;
   cursor: pointer;
 }
 .labelWithButton{
-  width: 85%;
+  width: 84%;
   float: left;
   border-right: none;
 }
 .corporate-btn{
   color: darkorange;
-  background: #444444;
+  //background: #444444;
 }
 .btn-right{
   position: absolute;
-  right: 11px;
+  right: 2px;
 }
 .clear-both{
   clear: both;

@@ -5,22 +5,24 @@ angular.module('starter.controllers', [])
   })
   .controller('EmployeeListCtrl', function($scope, $ionicModal, $http, baseUrl, $location, $anchorScroll) {
     //filling data by using REST
-    ($scope.getEmployeeList = function(){
+/*    ($scope.getEmployeeList = function(){
       $http.get(baseUrl)
         .then(function(response){
             $scope.emplList = response.data;
       }, function(response) {
             console.log("$http.get: status = " + response.status);
       });
-    })();
+    })();*/
 
     //alternative of using REST (uncomment)
- /*   $scope.saveToLocalStorage = function(){
+    $scope.saveToLocalStorage = function(){
       window.localStorage["emplList"] = angular.toJson($scope.emplList);
     }
+
     if (!angular.isUndefined(window.localStorage["emplList"])){
       $scope.emplList = JSON.parse(window.localStorage["emplList"]);
-    } else {
+    } else
+    {
       $scope.emplList = [
         {
           photo: 1,
@@ -55,7 +57,7 @@ angular.module('starter.controllers', [])
           skills: ["Java", "Lisp", "BPMN"]
         },
         {
-          photo: 7,
+          photo: 2,
           name: 'Barbara García',
           start: "01.02.2004",
           position: "QA specialist",
@@ -71,7 +73,7 @@ angular.module('starter.controllers', [])
           skills: ["Java", "Lisp", "BPMN"]
         },
         {
-          photo: 7,
+          photo: 5,
           name: 'Kevin Martin',
           start: "31.01.2014",
           position: "Software Developer",
@@ -95,7 +97,7 @@ angular.module('starter.controllers', [])
           skills: ["Java", "HTML", "BPMN"]
         },
         {
-          photo: 7,
+          photo: 3,
           name: 'Jackson Wilson',
           start: "10.12.2010",
           position: "Software Developer",
@@ -136,7 +138,7 @@ angular.module('starter.controllers', [])
         }
       ];
       $scope.saveToLocalStorage();
-    }*/
+    }
 
     //scroll to top of list calling Search or Order services
     $scope.showTop = function () {
@@ -206,7 +208,7 @@ angular.module('starter.controllers', [])
     $scope.openAddNewWindow = function() {
       $scope.newEmployee = {};
       $scope.verify = "";
-      $scope.picsList = [1, 2, 3, 4, 5, 6, 7];
+      $scope.picsList = [1, 2, 3, 4, 5, 6];
       $scope.changeAvatarVisible = false;
       $scope.department = {
         selected: "it",
@@ -242,11 +244,11 @@ angular.module('starter.controllers', [])
       };
       $scope.newEmployee.startDate = new Date();
       $scope.skill = [
-        {name: "HTML7", exist: false},
-        {name: "CSS3", exist: false},
-        {name: "JavaScript", exist: false},
-        {name: "Ionic", exist: false},
-        {name: "AngularJS", exist: false}
+        {name: "HTML7", exist: false, color: 'royal'},
+        {name: "CSS3", exist: false, color: 'balanced'},
+        {name: "JavaScript", exist: false, color: 'energized'},
+        {name: "Ionic", exist: false, color: 'positive'},
+        {name: "AngularJS", exist: false, color: 'assertive'}
       ];
 
       $scope.modal.show();
@@ -259,7 +261,7 @@ angular.module('starter.controllers', [])
 
     $scope.changeAvatar = function(){
       $scope.changeAvatarVisible = false;
-      $scope.picsList = [1, 2, 3, 4, 5, 6, 7];
+      $scope.picsList = [1, 2, 3, 4, 5, 6];
     }
 
     $scope.isSkillsVisible = true;
@@ -272,14 +274,13 @@ angular.module('starter.controllers', [])
 
     $scope.postNewEmployee = function(item){
       //alternative of using REST (uncomment)
-      /*
       $scope.saveToLocalStorage();
       $scope.emplList.push(item);
-      */
-      $scope.emplList.push(item);
+
+/*      $scope.emplList.push(item);
       $http.put(baseUrl, $scope.emplList).success(function(response){
         console.log("$http.put: new record added");
-      });
+      });*/
     }
 
     //adding new employee by pressing SAVE button
